@@ -65,7 +65,13 @@ data "aws_ami" "amazon-linux" {
     values = ["amazon"]
   }
 }
+variable "git-name" {
+  default = "Mecit-tuksoy"
+}
 
+variable "git-token" {
+  default = ""
+}
 resource "aws_instance" "tf-docker-ec2" {
   ami = data.aws_ami.amazon-linux.id
   instance_type = "t2.micro"
@@ -80,7 +86,3 @@ resource "aws_instance" "tf-docker-ec2" {
 output "website" {
   value = "http://${aws_instance.tf-docker-ec2.public_dns}"
 }
-
-
-
-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
