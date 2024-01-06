@@ -64,13 +64,19 @@ data "aws_ami" "amazon-linux" {
     name   = "owner-alias"
     values = ["amazon"]
   }
+  
+  filter {
+    name   = "name"
+    values = ["al2023-ami-2023*"]
+  }
 }
+
 variable "git-name" {
-  default = "Mecit-tuksoy"
+  default = "********"
 }
 
 variable "git-token" {
-  default = ""
+  default = "********"
 }
 resource "aws_instance" "tf-docker-ec2" {
   ami = data.aws_ami.amazon-linux.id
